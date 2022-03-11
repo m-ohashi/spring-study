@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.datasource.UserRepositoryImpl;
 import com.example.demo.domain.User;
 import com.example.demo.service.UserService;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,13 +13,13 @@ import java.util.Map;
 @RestController
 public class UserController {
     @RequestMapping("/")
-    Map index(){
+    Map index() {
         ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         UserService userService = context.getBean(UserService.class);
         User user = userService.register("hoge");
-        Map<String,String> result = new HashMap<>();
-        result.put("id",user.getUserId().toString());
-        result.put("name",user.getUserName());
+        Map<String, String> result = new HashMap<>();
+        result.put("id", user.getUserId().toString());
+        result.put("name", user.getUserName());
         return result;
     }
 }
